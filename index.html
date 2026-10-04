@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divine Lancer | Digital Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --bg-card: #111111;
+            --gold: #D4AF37;
+            --text-light: #ffffff;
+            --text-muted: #a0a0a0;
+            --glow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .logo-text {
+            font-family: 'Cinzel', serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(5, 5, 5, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Real Logo Image Container */
+        .brand-logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+            transition: transform 0.3s ease;
+        }
+
+        .brand-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .brand-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links li a {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            color: var(--gold);
+            text-shadow: var(--glow);
+        }
+
+        .auth-btn {
+            border: 1px solid var(--gold);
+            padding: 8px 15px;
+            border-radius: 20px;
+            color: var(--gold) !important;
+        }
+        .auth-btn:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            background: 
+                linear-gradient(45deg, transparent 48%, rgba(212, 175, 55, 0.1) 50%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, rgba(212, 175, 55, 0.1) 50%, transparent 52%),
+                linear-gradient(90deg, transparent 49%, rgba(255, 255, 255, 0.05) 50%, transparent 51%),
+                linear-gradient(0deg, transparent 49%, rgba(255, 255, 255, 0.05) 50%, transparent 51%);
+            background-size: 100px 100px;
+            background-color: var(--bg-dark);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, #050505 80%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            color: var(--gold);
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 30px;
+            background: rgba(212, 175, 55, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: var(--glow);
+        }
+
+        .btn:hover {
+            background: var(--gold);
+            color: var(--bg-dark);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.8);
+        }
+
+        /* Common Section Styles */
+        .section-padding { padding: 100px 20px; text-align: center; }
+        .section-title {
+            font-size: 2.8rem;
+            color: var(--gold);
+            text-shadow: var(--glow);
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* Cards */
+        .grid-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid #222;
+            border-radius: 8px;
+            padding: 40px 30px;
+            width: 320px;
+            transition: all 0.4s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        a.card { display: block; cursor: pointer; }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 8px;
+            padding: 2px;
+            background: linear-gradient(45deg, transparent, var(--gold), transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .card:hover::before { opacity: 1; }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
+            background: #151515;
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .card p { color: var(--text-muted); line-height: 1.7; font-size: 0.95rem; }
+
+        /* Journey Timeline */
+        .journey-section {
+            background: url(preminum_bg-removebg-preview.png);
+            border-top: 1px solid #1a1a1a;
+            border-bottom: 1px solid #1a1a1a;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.5;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .journey-section:hover {
+            opacity: 1;
+            transform: scale(1.02);
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 30px;
+            text-align: left;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; height: 100%; width: 2px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+        }
+
+        .timeline-item { position: relative; margin-bottom: 40px; padding-left: 20px; }
+        .timeline-dot {
+            position: absolute; left: -35px; top: 5px; width: 12px; height: 12px;
+            border-radius: 50%; background: var(--gold); box-shadow: 0 0 10px var(--gold);
+        }
+        .timeline-date { color: var(--gold); font-weight: 600; margin-bottom: 5px; letter-spacing: 1px; }
+        .timeline-content h3 { font-size: 1.4rem; margin-bottom: 10px; }
+        .timeline-content p { color: var(--text-muted); line-height: 1.6; }
+
+        /* Reviews */
+        .quote-icon { font-size: 2.5rem; color: var(--gold); font-family: serif; margin-bottom: 10px; opacity: 0.5; }
+        .reviewer { margin-top: 20px; color: var(--gold); font-family: 'Cinzel', serif; letter-spacing: 1px; }
+
+        /* Forms */
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 8px; color: var(--gold); font-size: 0.9rem; letter-spacing: 1px; }
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 12px 15px; background: #0a0a0a; border: 1px solid #333;
+            color: #fff; border-radius: 4px; font-family: 'Montserrat', sans-serif; transition: border-color 0.3s ease;
+        }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--gold); }
+        .submit-btn { width: 100%; margin-top: 10px; background: transparent; }
+
+        .contact-form {
+            max-width: 600px; margin: 0 auto; background: var(--bg-card); padding: 40px;
+            border-radius: 8px; border: 1px solid #222; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* --- AUTHENTICATION MODAL (LOGIN / SIGN UP) --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            margin: 8% auto;
+            width: 90%;
+            max-width: 450px;
+            border-radius: 12px;
+            position: relative;
+            border: 1px solid var(--gold);
+            box-shadow: 0 0 40px rgba(212,175,55,0.2);
+            background: 
+                linear-gradient(135deg, rgba(212,175,55,0.05) 25%, transparent 25%) -25px 0,
+                linear-gradient(225deg, rgba(212,175,55,0.05) 25%, transparent 25%) -25px 0,
+                linear-gradient(315deg, rgba(212,175,55,0.05) 25%, transparent 25%),
+                linear-gradient(45deg, rgba(212,175,55,0.05) 25%, transparent 25%);
+            background-size: 50px 50px;
+            background-color: #080808;
+            overflow: hidden;
+        }
+
+        .modal-inner {
+            background: rgba(10, 10, 10, 0.92);
+            padding: 40px;
+            border-radius: 12px;
+        }
+
+        .close-btn {
+            color: var(--gold);
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10;
+            transition: color 0.3s;
+        }
+        .close-btn:hover { color: #fff; }
+
+        .auth-toggle {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 15px;
+        }
+
+        .auth-toggle button {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            font-family: 'Cinzel', serif;
+            cursor: pointer;
+            transition: color 0.3s;
+            outline: none;
+        }
+
+        .auth-toggle button.active {
+            color: var(--gold);
+            text-shadow: var(--glow);
+        }
+
+        .auth-form h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            background: url(login\ page\ bg.jpg); padding: 40px 20px; text-align: center; border-top: 1px solid #222; opacity: 0.5;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        footer p { color: var(--text-muted); font-size: 0.9rem; }
+        .footer-gold { color: var(--gold); }
+
+        .firstf{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            margin-top: 20px;
+            margin-left: 1rem;
+            justify-content: start;
+        }
+
+        .footerlinks{
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        .footerdetailssection{
+            display: flex;
+            justify-content: space-between;
+        }
+        .footerlog {
+           background: url(preminum_bg-removebg-preview.png)no-repeat center center;
+           background-size: cover;
+           width: 30rem;
+           height: 25rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .nav-links { display: none; }
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="nav-container">
+            <div class="logo-area">
+                <!-- Replaced with your provided emblem logo -->
+                <a href="#home"><img src="preminum_bg-removebg-preview.png" alt="Divine Lancer Logo" class="brand-logo"></a>
+                <span class="brand-title">DIVINE LANCER</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#journey">Journey</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" id="loginNavBtn" class="auth-btn">Login / Join</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- AUTHENTICATION MODAL -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <div class="modal-inner">
+                <div class="auth-toggle">
+                    <button id="toggleLogin" class="active">Login</button>
+                    <button id="toggleSignup">Sign Up</button>
+                </div>
+                
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form">
+                    <h3>Welcome Back</h3>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn submit-btn">Access Portal</button>
+                </form>
+
+                <!-- Sign Up Form -->
+                <form id="signupForm" class="auth-form" style="display: none;">
+                    <h3>Join the Vanguard</h3>
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" placeholder="Choose a username" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" placeholder="Create a password" required>
+                    </div>
+                    <button type="submit" class="btn submit-btn">Create Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>DIVINE LANCER</h1>
+            <h2>Web Designing & Development • Graphic Design</h2>
+            <p>Forging striking visual brand assets, custom geometric layouts, and dynamic front-end experiences. Bringing your creative vision to the screen with precision.</p>
+            <a href="#services" class="btn">Explore My Work</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <p style="color: var(--text-muted); margin-bottom: 40px;">Select a service below to start your project.</p>
+            <div class="grid-container">
+                <a href="#contact" class="card">
+                    <div class="service-icon">🗡️</div>
+                    <h3>Graphic Design</h3>
+                    <p>Creating striking visual brand assets, geometric 2D vector designs, and custom background aesthetics tailored to your unique identity.</p>
+                </a>
+                <a href="#contact" class="card">
+                    <div class="service-icon">✨</div>
+                    <h3>UI / Web Design</h3>
+                    <p>Crafting visually stunning, user-centric interfaces. From dark-fantasy themes to sleek components, ensuring engaging user experiences.</p>
+                </a>
+                <a href="#contact" class="card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Web Development</h3>
+                    <p>Building responsive front-end experiences using HTML, CSS, and JavaScript. Ensuring seamless event listeners, smooth navigation, and flawless interactions.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Section -->
+    <section id="journey" class="section-padding journey-section">
+        <div class="container">
+            <h2 class="section-title">The Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Phase I</div>
+                    <div class="timeline-content">
+                        <h3>The Visual Spark</h3>
+                        <p>Established the Divine Lancer aesthetic. Focused heavily on graphic design, vector art, and crafting custom brand identities and geometric layouts from the ground up.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Phase II</div>
+                    <div class="timeline-content">
+                        <h3>Logical Foundations</h3>
+                        <p>Expanded into the world of logic and automation. Mastered system-level C programming, explored Python for scripting, and began formalizing technical skills through a BCA program.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Phase III</div>
+                    <div class="timeline-content">
+                        <h3>The Digital Forge</h3>
+                        <p>Bridged the gap between raw code and visual design. Now specializing in complete front-end web development to bring stunning, interactive web interfaces to life on the screen.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Client Reviews</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <div class="quote-icon">❝</div>
+                    <p>"The dark-fantasy aesthetic was perfectly executed. The custom vector graphics and layout completely transformed our brand's online presence."</p>
+                    <h4 class="reviewer">- Orion Tech</h4>
+                </div>
+                <div class="card">
+                    <div class="quote-icon">❝</div>
+                    <p>"Flawless front-end execution. The custom event listeners and smooth scrolling made our UI incredibly responsive and engaging."</p>
+                    <h4 class="reviewer">- Nexus Studios</h4>
+                </div>
+                <div class="card">
+                    <div class="quote-icon">❝</div>
+                    <p>"Divine Lancer absolutely nailed our vision. The blend of striking geometry and flawless web code makes this one of the best digital portfolios we've ever commissioned."</p>
+                    <h4 class="reviewer">- Custom Client Review</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding contact-section">
+        <div class="container">
+            <h2 class="section-title">Forge an Alliance</h2>
+            <div class="contact-form">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Service Requested</label>
+                        <input type="text" placeholder="e.g., Graphic Design, Web Development..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Project Details</label>
+                        <textarea rows="5" placeholder="Tell me about your vision..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+       
+        <div class="footerdetailssection">
+
+        <div class="firstf">
+            <a href="" class="footerlinks">Home</a>
+            <a href="" class="footerlinks">Services</a>
+            <a href="" class="footerlinks">Journey</a>
+            <a href="" class="footerlinks">Reviews</a>
+            <a href="" class="footerlinks">Contact</a>
+        </div>
+
+        <div class="footerlog">
+           
+        </div>
+        </div>
+
+         <p>&copy; 2026 <span class="footer-gold">Divine Lancer</span> by Ravi Jha. Crafted in New Delhi.</p>
+    </footer>
+
+    <!-- JavaScript for Modal Functionality -->
+    <script>
+        const modal = document.getElementById("authModal");
+        const loginNavBtn = document.getElementById("loginNavBtn");
+        const closeModal = document.getElementById("closeModal");
+        
+        const toggleLogin = document.getElementById("toggleLogin");
+        const toggleSignup = document.getElementById("toggleSignup");
+        const loginForm = document.getElementById("loginForm");
+        const signupForm = document.getElementById("signupForm");
+
+        // Open Modal
+        loginNavBtn.onclick = function(e) {
+            e.preventDefault();
+            modal.style.display = "block";
+        }
+
+        // Close Modal
+        closeModal.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Close Modal if user clicks outside the box
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Toggle to Login Form
+        toggleLogin.onclick = function() {
+            loginForm.style.display = "block";
+            signupForm.style.display = "none";
+            toggleLogin.classList.add("active");
+            toggleSignup.classList.remove("active");
+        }
+
+        // Toggle to Sign Up Form
+        toggleSignup.onclick = function() {
+            signupForm.style.display = "block";
+            loginForm.style.display = "none";
+            toggleSignup.classList.add("active");
+            toggleLogin.classList.remove("active");
+        }
+
+        
+        
+    </script>
+   
+</body>
+</html>
